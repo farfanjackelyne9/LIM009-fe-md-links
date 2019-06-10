@@ -1,0 +1,28 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "## Preámbulo",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "eslint": "^5.16.0",
+    "eslint-config-node": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farfanjackelyne9/LIM009-fe-md-links.git"
+  },
+  "author": "Jackelyne Farfan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/farfanjackelyne9/LIM009-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/farfanjackelyne9/LIM009-fe-md-links#readme"
+}
