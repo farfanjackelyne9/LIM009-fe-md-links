@@ -23,7 +23,7 @@
   "author": "Jackelyne Farfan",
   "license": "MIT",
   "bin":{
-    "say-hello": "./cli.js"
+    "md-links": "./cli.js"
   },
   "bugs": {
     "url": "https://github.com/farfanjackelyne9/LIM009-fe-md-links/issues"
