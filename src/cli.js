@@ -3,37 +3,45 @@
 
 const [,,  ...args] = process.argv; 
 console.log(`link ingresado ${args}`); // Te pinta en la consola lo introducido.
- 
+const route = `${args}`; //Constante que contiende la ruta introducida en la consola.
+
 
 const path = require('path');
-const route = `${args}`; //Constante que contiende la ruta introducida en la consola.
 const fs = require('fs');
 
-//convierte ruta relativa en ruta absoluta.-----------------------------------------
+//analiza ruta y devuelve si es absoluta.-----------------------------------------
 export const absolutePath = (route)=>{
-    if(path.isAbsolute(route) === false){
-        return path.resolve(route);
-    }else{
-        return route
-    }
-}
-//routes (route);
-
-//Reconoce si es un archivo de forma sincrona---------------------------------------
-export const read_File = (route)=>{
-    let data = fs.readFileSync(route); 
-console.log(data.toString())
-    return data
+    return path.isAbsolute(route)
 }
 
- 
+//convierte ruta relativa en absoluta ---------------------------------------------
+export const newAbsRoute = (routeRelative)=>{
+    return path.resolve(routeRelative);
+}
 
-//Reconoce si es un directorio de forma sincrona-----------------------------------
+
+//Reconoce si es un archivo ---------------------------------------
+export const isFile = (route)=>{
+    const state = fs.statSync(route).isFile(); 
+    console.log(`es`,state);
+    return state
+}
+
+//Analiza extension del archivo---------------------------------------------
+export const analyzExt =(route)=>{
+   const ext = path.extname(route);
+   return ext
+}
+
+
+//Lee el directorio de forma sincrona-----------------------------------
 export const read_dir = (route)=>{
     let dir = fs.readdirSync(route);
     console.log(dir);
     return dir
 }
+
+
 
 
 

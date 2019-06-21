@@ -1,4 +1,4 @@
 {
-    "plugins": ["@babel/plugin-transform-modules-common.js"],
+    "plugins": ["@babel/plugin-transform-modules-commonjs"],
     "presets": ["@babel/preset-env"]
 }

@@ -22,7 +22,7 @@
   },
   "author": "Jackelyne Farfan",
   "license": "MIT",
-  "bin":{
+  "bin": {
     "md-links": "./cli.js"
   },
   "bugs": {
