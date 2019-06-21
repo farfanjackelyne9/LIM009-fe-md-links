@@ -34,51 +34,20 @@ export const analyzExt =(route)=>{
 }
 
 
-//Lee el directorio de forma sincrona-----------------------------------
+//Lee el directorio ---------------------------------------------------------
 export const read_dir = (route)=>{
     let dir = fs.readdirSync(route);
     console.log(dir);
     return dir
 }
 
+//Recorre el directorio ----------------------------------------------------
 
 
 
 
 
 
-
-
-
-
-
-
-/*let buff = Buffer.from(route);
-
-// Reconoce si es un archivo--------------------------------------------------------
-const readF = (buff)=>{
-    fs.readFile(buff, 'utf-8',(err, data) => { 
-        if (err) {
-          console.log('error: ',err);
-        }else{
-            console.log(data)
-        }
-    });
-}
-readF(buff)
-
-// Reconoce si es un directorio (devuelve un array)----------------------------------
-const readD = (buff) =>{
-    fs.readdir(buff,(err,data) =>{
-        if(err){
-            console.log('error: ',err);
-        }else{
-           console.log(data);
-
-        }
-    })
-}
-readD(buff)*/
 
 
 

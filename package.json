@@ -14,7 +14,11 @@
     "jest": "^24.8.0"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "build": "babel src -d lib"
+  },
+  "bin": {
+    "md-links": "./src/cli.js"
   },
   "repository": {
     "type": "git",
@@ -22,11 +26,13 @@
   },
   "author": "Jackelyne Farfan",
   "license": "MIT",
-  "bin": {
-    "md-links": "./cli.js"
-  },
+  
   "bugs": {
     "url": "https://github.com/farfanjackelyne9/LIM009-fe-md-links/issues"
   },
-  "homepage": "https://github.com/farfanjackelyne9/LIM009-fe-md-links#readme"
+  "homepage": "https://github.com/farfanjackelyne9/LIM009-fe-md-links#readme",
+  "directories": {
+    "test": "test"
+  }
+  
 }

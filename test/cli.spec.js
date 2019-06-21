@@ -18,7 +18,7 @@ describe("newAbsRoute",()=>{
         expect(typeof newAbsRoute).toEqual('function');
     }),
     it("deberia resolver ruta relativa en ruta absoluta",()=>{
-        expect(newAbsRoute('LIM009-fe-md-links')).toBe('/home/jacky/LIM009-fe-md-links')
+        expect(newAbsRoute('LIM009-fe-md-links')).toBe('/home/jacky/Escritorio/LIM009-fe-md-links/LIM009-fe-md-links')
     }),
     it("deberia retornar ruta absoluta",()=>{
         expect(newAbsRoute('/home/jacky/Escritorio/LIM009-fe-md-links')).toBe('/home/jacky/Escritorio/LIM009-fe-md-links')
