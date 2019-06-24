@@ -9,8 +9,8 @@ const route = `${args}`; //Constante que contiende la ruta introducida en la con
 const path = require('path');
 const fs = require('fs');
 
-//analiza ruta y devuelve si es absoluta.-----------------------------------------
-export const absolutePath = (route)=>{
+//analiza ruta y devuelve si es absoluta.(T-F)-----------------------------------------
+/*export const absolutePath = (route)=>{
     return path.isAbsolute(route)
 }
 
@@ -20,34 +20,64 @@ export const newAbsRoute = (routeRelative)=>{
 }
 
 
-//Reconoce si es un archivo ---------------------------------------
-export const isFile = (route)=>{
+//Reconoce si es un archivo (T-F)---------------------------------------
+const isFile = (route)=>{
     const state = fs.statSync(route).isFile(); 
-    console.log(`es`,state);
+    //console.log(`es`,state);
     return state
 }
+isFile(route);
+
+//Reconoce si es un directorio (T-F)----------------------------------------
+const isDirectory = (route) =>{
+    const state = fs.statSync(route).isDirectory();
+    //console.log(`es directorio`, state);
+    return state
+}
+isDirectory(route)
 
 //Analiza extension del archivo---------------------------------------------
-export const analyzExt =(route)=>{
-   const ext = path.extname(route);
+const analyzExtMd =(route)=>{
+   const ext = path.extname(route) === '.md';
    return ext
 }
+analyzExtMd(route);
 
 
 //Lee el directorio ---------------------------------------------------------
-export const read_dir = (route)=>{
+const read_dir = (route)=>{
     let dir = fs.readdirSync(route);
-    console.log(dir);
-    return dir
+    dir.forEach((e) =>{
+     console.log(path.join(route,e))
+    })
+    
 }
+read_dir(route);*/
 
-//Recorre el directorio ----------------------------------------------------
+//Recorre todos los archivos y regresa .md ----------------------------------------------------
+let mdFiles =[];
+const analyzeMdFiles = (dir)=>{
+    //let arrFiles = [];
+    //console.log('[+]',dir);
+    let files = fs.readdirSync(dir);
+    for(let i=0 ;i<files.length;i++){
+        let absRoute = path.join(dir,files[i]);
+      
+        if(fs.lstatSync(absRoute).isDirectory()===true){
+            analyzeMdFiles(absRoute);
 
-
-
-
-
-
+        }else if(path.extname(absRoute) === '.md'){
+            objectfArray ={};
+            objectfArray.file= absRoute;
+            //console.log(`\t`,next);
+            //arrFiles.push(next);
+            mdFiles.push(objectfArray);
+        }
+    }
+    //console.log(arrFiles);
+}
+analyzeMdFiles(route);
+console.log(mdFiles);
 
 
 

@@ -60,6 +60,7 @@ describe("read_dir",()=>{
         '.gitignore',
         'README.md',
         'coverage',
+        "lib",
         'node_modules',
         'package.json',
         'src',
