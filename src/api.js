@@ -38,12 +38,12 @@ const analyzExtMd =(route)=>{
     const ext = path.extname(route) === '.md';
     return ext
  }
-/*
+
  //Lee el archivo-----------------------------------------------------------
 const read_Files = (route)=>{
    let file = fs.readFileSync(route).toString();
    return file
-}*/
+}
 
 
 //Lee el directorio ---------------------------------------------------------
@@ -66,19 +66,19 @@ const analyzeMdFiles = (dir)=>{
     }
 }
 analyzeMdFiles(route);
-console.log(mdFiles);
+//console.log(mdFiles);
  
-
-
-/*const convertToHTML=(markdownText)=> {
-
-    let dir = fs.readFileSync(markdownText);
-    let readFile = dir.toString();
-    const renderer = new marked.Renderer()
-   renderer.link = externalLinkRenderer;
-   return marked(readFile, { renderer });
-  }
-  convertToHTML(route)*/
+//Convierte md a HTML--------------------------------------------------------------------------
+const convertToHTML=(mdFiles)=> {
+    mdFiles.forEach((element) => {
+        const x = element.file;
+        let dir = read_Files(x);
+        const renderer = new marked.Renderer()
+        /*renderer.link = externalLinkRenderer*/
+        console.log (marked(dir,{renderer}));
+    });
+}
+convertToHTML(mdFiles);
 
 /*
 const externalLinkRenderer = (href, title, text) => {
