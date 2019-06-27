@@ -7,14 +7,18 @@ const fs = require('fs');
 
 
 //analiza ruta y devuelve si es absoluta.(T-F)-----------------------------------------
-/*const absolutePath = (route)=>{
-    return path.isAbsolute(route)
+const absolutePath = (route)=>{
+    if(path.isAbsolute(route)===true){
+        return route;
+    }else{
+        return path.resolve(route);
+    }
 }
 
 //convierte ruta relativa en absoluta ---------------------------------------------
-const newAbsRoute = (routeRelative)=>{
+/*const newAbsRoute = (routeRelative)=>{
     return path.resolve(routeRelative);
-}
+}*/
 
 
 //Reconoce si es un archivo (T-F)---------------------------------------
@@ -24,7 +28,7 @@ const isFile = (route)=>{
     return state
 }
 
-*/
+
 //Reconoce si es un directorio (T-F)----------------------------------------
 const is_Directory = (route) =>{
     const state = fs.statSync(route).isDirectory();
@@ -55,43 +59,41 @@ const read_dir = (route)=>{
 //Recorre todos los archivos y regresa .md ----------------------------------------------------
 let mdFiles =[]
 const analyzeMdFiles = (dir)=>{
-    let files = read_dir(dir)
-    for(let i=0 ;i<files.length;i++){
-        let absRoute = path.join(dir,files[i]);   
-        if(is_Directory(absRoute)===true){
-            analyzeMdFiles(absRoute);
-        }else if(analyzExtMd(absRoute)){
-            mdFiles.push({file:absRoute});
+    if(isFile(dir) === true){
+      mdFiles.push({file:dir})
+    }else{
+        let directory = read_dir(dir)
+        for(let i=0 ;i<directory.length;i++){
+            let absRoute = path.join(dir,directory[i]);   
+            if(is_Directory(absRoute)===true){
+                analyzeMdFiles(absRoute);
+            }else if(analyzExtMd(absRoute)){
+                mdFiles.push({file:absRoute});
+            }
         }
-    }
+    }   
 }
 analyzeMdFiles(route);
 //console.log(mdFiles);
  
-//Convierte md a HTML--------------------------------------------------------------------------
+
+//Convierte md a HTML retorna [{href:..},{text:..},{file:..}..]--------------------------------------------------------------------------
 const convertToHTML=(mdFiles)=> {
+    let arrLink =[];
     mdFiles.forEach((element) => {
-        const x = element.file;
+        let x = element.file;
         let dir = read_Files(x);
         const renderer = new marked.Renderer()
-        /*renderer.link = externalLinkRenderer*/
-        console.log (marked(dir,{renderer}));
+        renderer.link = (href,title,text)=>{
+            arrLink.push({href:href, text:text, file:x})   
+        }
+        return marked(dir,{renderer});
     });
+    console.log(arrLink);
 }
 convertToHTML(mdFiles);
 
-/*
-const externalLinkRenderer = (href, title, text) => {
-    
-    if (href.startsWith("http://") || href.startsWith("https://")) {
-       
-      if (!text) {
-        text = href
-      }
-      console.log(`{href:${href} title:${title}  text:${text}}`);
-      
-    }
-    return `[${text}](${href})`
-}
-  */
+
+
+  
    
