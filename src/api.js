@@ -15,12 +15,6 @@ const absolutePath = (route)=>{
     }
 }
 
-//convierte ruta relativa en absoluta ---------------------------------------------
-/*const newAbsRoute = (routeRelative)=>{
-    return path.resolve(routeRelative);
-}*/
-
-
 //Reconoce si es un archivo (T-F)---------------------------------------
 const isFile = (route)=>{
     const state = fs.statSync(route).isFile(); 
@@ -59,12 +53,13 @@ const read_dir = (route)=>{
 //Recorre todos los archivos y regresa .md ----------------------------------------------------
 let mdFiles =[]
 const analyzeMdFiles = (dir)=>{
-    if(isFile(dir) === true){
-      mdFiles.push({file:dir})
+    let route_Abs = absolutePath(dir);
+    if(isFile(route_Abs) === true){
+      mdFiles.push({file:route_Abs})
     }else{
-        let directory = read_dir(dir)
+        let directory = read_dir(route_Abs)
         for(let i=0 ;i<directory.length;i++){
-            let absRoute = path.join(dir,directory[i]);   
+            let absRoute = path.join(route_Abs,directory[i]);   
             if(is_Directory(absRoute)===true){
                 analyzeMdFiles(absRoute);
             }else if(analyzExtMd(absRoute)){
@@ -83,7 +78,7 @@ const convertToHTML=(mdFiles)=> {
     mdFiles.forEach((element) => {
         let x = element.file;
         let dir = read_Files(x);
-        const renderer = new marked.Renderer()
+        const renderer = new marked.Renderer();
         renderer.link = (href,title,text)=>{
             arrLink.push({href:href, text:text, file:x})   
         }
