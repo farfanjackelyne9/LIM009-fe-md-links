@@ -2,8 +2,10 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "## Preámbulo",
-  "main": "index.js",
-  "dependencies": {},
+  "main": "./lib/api.js",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -26,7 +28,6 @@
   },
   "author": "Jackelyne Farfan",
   "license": "MIT",
-  
   "bugs": {
     "url": "https://github.com/farfanjackelyne9/LIM009-fe-md-links/issues"
   },
@@ -34,5 +35,4 @@
   "directories": {
     "test": "test"
   }
-  
 }
