@@ -13,7 +13,10 @@
     "@babel/preset-env": "^7.4.5",
     "eslint": "^5.16.0",
     "eslint-config-node": "^4.0.0",
-    "jest": "^24.8.0"
+    "fetch-mock": "^7.3.6",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "mock-fs": "^4.10.1"
   },
   "scripts": {
     "test": "jest --coverage",
