@@ -11,8 +11,7 @@ const fetch = require('node-fetch');
     text: 'link3',
     file: '/home/jacky/Escritorio/LIM009-fe-md-links/src/carpeta/carpeta2/REadme.md' } ]*/
 
-
-export const arrObjLinks = (route) => {
+const arrObjLinks = (route) => {
         const arrLinks = route ;
         //console.log(arrLinks);
         const objLinks = arrLinks.map((e) => {
@@ -20,7 +19,6 @@ export const arrObjLinks = (route) => {
           return fetch(links)
           .then((res) => {
             e.status = res.status;
-            //console.log(res)
             if (res.ok) {
               e.statusText = 'ok';
             } else {
@@ -37,3 +35,6 @@ export const arrObjLinks = (route) => {
       };
       //arrObjLinks(links)
       //.then((res)=>{console.log(res)});
+      module.exports ={
+        arrObjLinks
+      }

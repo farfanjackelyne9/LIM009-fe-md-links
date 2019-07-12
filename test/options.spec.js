@@ -21,8 +21,8 @@ describe("stateLinks",()=>{
         expect(typeof stateLinks).toEqual('function');
     }),
     
-    it("deberia retornar ruta absoluta",()=>{
-        expect(stateLinks(links2)).toBe({ total: 3, unique: 1, broken: 1 })
+    it("deberia retornar la validación de los links con propiedades broken,total,unique",()=>{
+        expect(stateLinks(links2)).toStrictEqual({"broken": 1, "total": 3, "unique": 1})
     })
  
 });

@@ -14,7 +14,7 @@ const links2 = [ { href: 'https://babeljs.io/docs/en/next/babel-helper-wrap-func
  status: 404,
  statusText: 'fail' } ];
   
-  const stateLinks = (route) => {
+ export const stateLinks = (route) => {
     //const promiseArrObjLinks = route.then((res)=>{
      const allLinks = route.map ((e)=>{e.href
      });
@@ -27,4 +27,4 @@ const links2 = [ { href: 'https://babeljs.io/docs/en/next/babel-helper-wrap-func
      }
     //})
   };
-  console.log(stateLinks(links2));
+  //console.log(stateLinks(links2));

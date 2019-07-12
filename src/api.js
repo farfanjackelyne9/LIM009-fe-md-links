@@ -44,8 +44,9 @@ const analyzExtMd =(route)=>{
  //Lee el archivo-----------------------------------------------------------
 const read_Files = (route)=>{
    let file = fs.readFileSync(route).toString();
-   return file
+  return file;
 }
+//read_Files(route)
 
 
 //Lee el directorio ---------------------------------------------------------

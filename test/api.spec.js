@@ -6,8 +6,7 @@ import {
     read_Files,
     read_dir,
     analyzeMdFiles,
-    convertToHTML,
-    stateLinks
+    convertToHTML
 } from "../src/api.js"
 
 
@@ -69,8 +68,8 @@ describe("read_Files",()=>{
     it("deberia ser una funcion",()=>{
         expect(typeof read_Files).toEqual('function');
     });
-    it("deberia retornar un array con el contenido del directorio",()=>{
-        expect(read_Files('/home/jacky/Escritorio/LIM009-fe-md-links/src/carpeta/REAdme.md')).toEqual("[link1](https://babeljs.io/docs/en/next/babel-helper-wrap-function.html)")
+    it("deberia retornar ",()=>{
+        expect(read_Files('/home/jacky/Escritorio/LIM009-fe-md-links/src/carpeta/REAdme.md')).toEqual("hola [link1]https://babeljs.io/docs/en/next/babel-helper-wrap-function.html")
     })
 });
 
@@ -109,7 +108,7 @@ describe("convertToHTML",()=>{
     it("deberia ser una funcion",()=>{
         expect(typeof convertToHTML).toEqual('function');
     }),
-    it("deberia retornar rutas absolutas en un array de objetos con la propiedad file",()=>{
+    it("deberia retornar un array de objetos con propiedades text, file,href",()=>{
         expect(convertToHTML('/home/jacky/Escritorio/LIM009-fe-md-links/src/carpeta')).toBe([ { href: 'https://babeljs.io/docs/en/next/babel-helper-wrap-function.html',
         text: 'link1',
         file: '/home/jacky/Escritorio/LIM009-fe-md-links/src/carpeta/REAdme.md' },
